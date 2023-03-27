@@ -4,11 +4,13 @@ class BaseCalculator
 	{
 		this.outputContainer = output
 		this.historyContainer = history
+		this.operationList = [];
 	}
 
 	btnAction(value)
 	{
 		this.outputContainer.innerText += value;
+		this.operationList.push(this.outputContainer.innerText);
 	}
 
 	cancel()
@@ -38,9 +40,16 @@ class BaseCalculator
 			this.historyContainer.prepend(resultDiv);
 
 			this.outputContainer.innerText = result;
+			this.operationList.push(this.outputContainer.innerText);
 		} catch {
 			this.outputContainer.innerText = "Wrong input";
 		}
+	}
+
+	back()
+	{
+		this.operationList.pop(); // On enlève le dernier élément (élément actuel)
+		this.outputContainer.innerText = (this.operationList.length !== 0) ? this.operationList[this.operationList.length - 1] : ""; // Si le tableau est vide, on met un texte vide car il n'y a aucun historique
 	}
 }
 
