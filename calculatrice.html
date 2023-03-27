@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <title>Calculatrice</title>
 
@@ -10,29 +10,29 @@
         <div class="calc-history" id="calc-history"></div>
         <div class="calc-current" id="calc-current"></div>
         <div class="calc-buttons">
-            <button onClick="btnAction(7)">7</button>
-            <button onClick="btnAction(8)">8</button>
-            <button onClick="btnAction(9)">9</button>
-            <button onClick="btnAction('/')">/</button>
+            <button onClick="baseCalculator.btnAction(7)">7</button>
+            <button onClick="baseCalculator.btnAction(8)">8</button>
+            <button onClick="baseCalculator.btnAction(9)">9</button>
+            <button onClick="baseCalculator.btnAction('/')">/</button>
             <div></div>
-            <button onClick="cancel()">C</button>
-            <button onClick="btnAction(4)">4</button>
-            <button onClick="btnAction(5)">5</button>
-            <button onClick="btnAction(6)">6</button>
-            <button onClick="btnAction('*')">x</button>
-            <button onClick="btnAction('(')">(</button>
-            <button onClick="btnAction(')')">)</button>
-            <button onClick="btnAction(1)">1</button>
-            <button onClick="btnAction(2)">2</button>
-            <button onClick="btnAction(3)">3</button>
-            <button onClick="btnAction('-')">-</button>
+            <button onClick="baseCalculator.cancel()">C</button>
+            <button onClick="baseCalculator.btnAction(4)">4</button>
+            <button onClick="baseCalculator.btnAction(5)">5</button>
+            <button onClick="baseCalculator.btnAction(6)">6</button>
+            <button onClick="baseCalculator.btnAction('*')">x</button>
+            <button onClick="baseCalculator.btnAction('(')">(</button>
+            <button onClick="baseCalculator.btnAction(')')">)</button>
+            <button onClick="baseCalculator.btnAction(1)">1</button>
+            <button onClick="baseCalculator.btnAction(2)">2</button>
+            <button onClick="baseCalculator.btnAction(3)">3</button>
+            <button onClick="baseCalculator.btnAction('-')">-</button>
             <div></div>
             <div></div>
-            <button onClick="btnAction(0)">0</button>
-            <button onClick="btnAction('.')">.</button>
+            <button onClick="baseCalculator.btnAction(0)">0</button>
+            <button onClick="baseCalculator.btnAction('.')">.</button>
             <div></div>
-            <button onClick="btnAction('+')">+</button>
-            <button onClick="submit()" class="btn-result">=</button>
+            <button onClick="baseCalculator.btnAction('+')">+</button>
+            <button onClick="baseCalculator.submit()" class="btn-result">=</button>
         </div>
     </div>
 

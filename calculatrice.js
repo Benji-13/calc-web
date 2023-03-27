@@ -1,42 +1,47 @@
-let container = document.getElementById("calc-current");
-
-function btnAction(value)
+class BaseCalculator
 {
-	container.innerText += value;
-}
-
-function cancel()
-{
-	container.innerText = "";
-}
-
-function submit()
-{
-	let val = container.innerText;
-	try {
-		let result = eval(val);
-		let history = document.getElementById("calc-history");
-		let resultDiv = document.createElement("div");
-
-		resultDiv.classList.add("history-element")
-		resultDiv.innerHTML = `
-		<div class="elem-calc">
-			${val}
-		</div>
-		<div class="elem-equal">
-			=
-		</div>
-		<div class="elem-result">
-			${result}
-		</div>`;
-
-		history.prepend(resultDiv);
-
-		container.innerText = result;
-	} catch {
-		container.innerText = "Wrong input";
+	constructor(output, history)
+	{
+		this.outputContainer = output
+		this.historyContainer = history
 	}
 
+	btnAction(value)
+	{
+		this.outputContainer.innerText += value;
+	}
 
+	cancel()
+	{
+		this.outputContainer.innerText = "";
+	}
 
+	submit()
+	{
+		let val = this.outputContainer.innerText;
+		try {
+			let result = eval(val);
+			let resultDiv = document.createElement("div");
+
+			resultDiv.classList.add("history-element")
+			resultDiv.innerHTML = `
+			<div class="elem-calc">
+				${val}
+			</div>
+			<div class="elem-equal">
+				=
+			</div>
+			<div class="elem-result">
+				${result}
+			</div>`;
+
+			this.historyContainer.prepend(resultDiv);
+
+			this.outputContainer.innerText = result;
+		} catch {
+			this.outputContainer.innerText = "Wrong input";
+		}
+	}
 }
+
+let baseCalculator = new BaseCalculator(document.getElementById("calc-current"), document.getElementById("calc-history"));
