@@ -1,3 +1,5 @@
+const BASE_URL = "http://localhost:3000"
+
 class BaseCalculator
 {
 	constructor(output, history)
@@ -5,6 +7,11 @@ class BaseCalculator
 		this.outputContainer = output
 		this.historyContainer = history
 		this.operationList = [];
+		this.xhttp = new XMLHttpRequest();
+		this.xhttp.onload = () => {
+			console.log(this.xhttp.responseText)
+		}
+		this.date = Date.now()
 	}
 
 	btnAction(value)
@@ -41,8 +48,23 @@ class BaseCalculator
 
 			this.outputContainer.innerText = result;
 			this.operationList.push(this.outputContainer.innerText);
+
+			this.xhttp.open("POST", BASE_URL + "/success-event", true);
+			this.xhttp.setRequestHeader("Content-type", "application/json");
+			this.xhttp.send(JSON.stringify({
+				"timeTakenMs": Math.abs(new Date() - this.date)
+			}));
+
+			this.date = Date.now()
 		} catch {
 			this.outputContainer.innerText = "Wrong input";
+			this.xhttp.open("POST", BASE_URL + "/error-event", true);
+			this.xhttp.setRequestHeader("Content-type", "application/json");
+			this.xhttp.send(JSON.stringify({
+				"created_at": Date.now()
+			}));
+
+			this.date = Date.now()
 		}
 	}
 
